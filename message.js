@@ -4,12 +4,8 @@ class Message {
       this.name = name;
       if (!name) {
          throw Error("Message required.");
-
       }
       this.commands = commands
-      // if (Array.isArray(commands) === false) {
-      //    throw Error("Command array required")
-      // }
    }
 }
 
