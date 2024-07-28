@@ -5,6 +5,7 @@ class Rover {
       this.mode = mode;
       this.generatorWatts = generatorWatts;
    }
+
    receiveMessage(message) {
       let results = [];
       this.message = message.name;
@@ -18,17 +19,17 @@ class Rover {
 
       for (let i = 0; i < message.commands.length; i++) {
          if (message.commands[i].commandType === "STATUS_CHECK") {
-            results.push({ completed: this.completed, roverStatus: this.roverStatus })
+            results.push({ completed: this.completed, roverStatus: this.roverStatus });
          } else if (message.commands[i].commandType === "MODE_CHANGE") {
             this.roverStatus.mode = message.commands[i].value;
-            results.push({ completed: this.completed })
+            results.push({ completed: this.completed });
          } else if (message.commands[i].commandType === "MOVE" && this.roverStatus.mode === "LOW_POWER") {
-            this.roverStatus.mode === "LOW_POWER"
+            this.roverStatus.mode === "LOW_POWER";
             this.completed = false;
             results.push({ completed: this.completed });
          } else if (message.commands[i].commandType === "MOVE" && this.roverStatus.mode !== "LOW_POWER") {
             this.roverStatus.position = message.commands[i].value;
-            results.push({ completed: this.completed })
+            results.push({ completed: this.completed });
          };
       }
 

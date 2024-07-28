@@ -9,7 +9,4 @@ class Message {
    }
 }
 
-// let test = new Message("this is a test", ["Status_check"])
-// console.log(test)
-
 module.exports = Message;
